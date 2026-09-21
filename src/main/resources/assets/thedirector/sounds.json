@@ -2,96 +2,93 @@
   "whisper": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:entity.enderman.stare"
+        "name": "thedirector:whisper",
+        "attenuation_distance": 12
       }
     ]
   },
   "breath": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:entity.enderman.ambient"
+        "name": "thedirector:breath",
+        "attenuation_distance": 10
       }
     ]
   },
   "roof_step": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:block.gravel.step"
+        "name": "thedirector:roof_step",
+        "attenuation_distance": 20
       }
     ]
   },
   "step_echo": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:block.stone.step"
+        "name": "thedirector:step_echo",
+        "attenuation_distance": 24
       }
     ]
   },
   "void_ambient": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:ambient.cave"
+        "name": "thedirector:void_ambient",
+        "attenuation_distance": 32
       }
     ]
   },
   "static_noise": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:entity.ghast.scream"
+        "name": "thedirector:static_noise",
+        "attenuation_distance": 16
       }
     ]
   },
   "crash": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:entity.wither.spawn"
+        "name": "thedirector:crash"
       }
     ]
   },
   "extinguish": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:block.fire.extinguish"
+        "name": "thedirector:extinguish",
+        "attenuation_distance": 16
       }
     ]
   },
   "wood_creak": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:block.wooden_door.open"
+        "name": "thedirector:wood_creak",
+        "attenuation_distance": 20
       }
     ]
   },
   "reverse": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:block.beacon.deactivate"
+        "name": "thedirector:reverse"
       }
     ]
   },
   "chest": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:block.chest.open"
+        "name": "thedirector:chest",
+        "attenuation_distance": 16
       }
     ]
   },
   "thunder": {
     "sounds": [
       {
-        "type": "event",
-        "name": "minecraft:entity.lightning_bolt.thunder"
+        "name": "thedirector:thunder"
       }
     ]
   }

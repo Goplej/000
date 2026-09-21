@@ -1,8 +1,15 @@
 name: Build The Director
 
-# Сборка мода на раннерах GitHub (там есть доступ к maven.minecraftforge.net и к ассетам Mojang).
-# Результат: build/libs/thedirector-1.0.0.jar — он же публикуется в каталог ci/ этой же ветки,
-# а полный лог сборки складывается в ci/last_build.log (удобно смотреть ошибки компиляции).
+# Сборка и проверка мода на раннерах GitHub (там есть доступ к maven.minecraftforge.net
+# и к ассетам Mojang, которых нет в песочнице).
+#
+# Что делают задания:
+#   build   — ./gradlew build, публикация готового JAR и лога сборки в каталог ci/
+#   runtime — запуск настоящего выделенного сервера с самотестом мода
+#             (THEDIRECTOR_SELFTEST=1) и публикация серверного лога в ci/
+#
+# Артефакты публикуются в ci/ этой же ветки, поэтому сам workflow не перезапускается
+# на собственные коммиты (paths-ignore: ci/**).
 
 on:
   push:
@@ -18,7 +25,7 @@ permissions:
 
 concurrency:
   group: build-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -39,9 +46,9 @@ jobs:
         run: |
           chmod +x ./gradlew
           set +e
-          ./gradlew build --no-daemon --stacktrace > build_output.txt 2>&1
+          ./gradlew build --no-daemon --console=plain --stacktrace > build_output.txt 2>&1
           echo "gradle_exit_code=$?" >> build_output.txt
-          tail -n 120 build_output.txt
+          tail -n 80 build_output.txt
 
       - name: Probe real 1.20.1 API signatures
         if: always()
@@ -59,29 +66,13 @@ jobs:
             echo "=== forge network classes ==="
             unzip -l "$FORGEJAR" 2>/dev/null | grep -E "network/.*(SimpleChannel|ChannelBuilder|NetworkRegistry|NetworkDirection|MessageBuilder)" | head -20
             echo "=== NetworkRegistry ==="
-            javap -classpath "$CP" net.minecraftforge.network.NetworkRegistry 2>&1 | head -30
-            echo "=== SimpleChannel (old package) ==="
-            javap -classpath "$CP" net.minecraftforge.network.simple.SimpleChannel 2>&1 | head -40
-            echo "=== ServerPlayer.teleportTo ==="
-            javap -classpath "$CP" net.minecraft.server.level.ServerPlayer 2>&1 | grep -i "teleportTo" | head -10
-            echo "=== FriendlyByteBuf component ==="
-            javap -classpath "$CP" net.minecraft.network.FriendlyByteBuf 2>&1 | grep -iE "component" | head -10
-            echo "=== Screenshot ==="
-            javap -classpath "$CP" net.minecraft.client.Screenshot 2>&1 | head -12
-            echo "=== SimpleSoundInstance ctors ==="
-            javap -classpath "$CP" net.minecraft.client.resources.sounds.SimpleSoundInstance 2>&1 | grep -E "SimpleSoundInstance\(" | head -10
-            echo "=== ItemEntity.setNeverPickUp ==="
-            javap -classpath "$CP" net.minecraft.world.entity.item.ItemEntity 2>&1 | grep -iE "neverPickUp|setNever" | head -5
-            echo "=== GuiGraphics fill/drawString ==="
-            javap -classpath "$CP" net.minecraft.client.gui.GuiGraphics 2>&1 | grep -E "void fill|drawString" | head -10
-            echo "=== Level playSound/setBlock ==="
-            javap -classpath "$CP" net.minecraft.world.level.Level 2>&1 | grep -E "playSound|playLocalSound|setBlock\(" | head -12
-            echo "=== ServerLevel weather ==="
-            javap -classpath "$CP" net.minecraft.server.level.ServerLevel 2>&1 | grep -iE "weather" | head -5
-            echo "=== MobEffects CONFUSION ==="
-            javap -classpath "$CP" net.minecraft.world.effect.MobEffects 2>&1 | grep -iE "CONFUSION|HUNGER|NAUSEA" | head -5
+            javap -classpath "$CP" net.minecraftforge.network.NetworkRegistry 2>&1 | head -25
+            echo "=== SimpleChannel ==="
+            javap -classpath "$CP" net.minecraftforge.network.simple.SimpleChannel 2>&1 | head -25
+            echo "=== mods.toml in jar ==="
+            unzip -p build/libs/*.jar META-INF/mods.toml 2>&1 | head -12
           } > api_probe.txt 2>&1
-          cat api_probe.txt | head -120
+          head -60 api_probe.txt
 
       - name: Inspect build outputs
         if: always()
@@ -89,19 +80,18 @@ jobs:
           {
             echo ""
             echo "=== build/libs ==="; ls -la build/libs 2>&1 || true
-            echo "=== build/devlibs ==="; ls -la build/devlibs 2>&1 || true
             echo "=== build/reobfJar ==="; ls -la build/reobfJar 2>&1 || true
-            echo "=== jar contents (top) ==="; unzip -l build/libs/*.jar 2>&1 | head -n 40 || true
+            echo "=== jar contents ==="; unzip -l build/libs/*.jar 2>&1 | head -n 45 || true
           } >> build_output.txt
 
-      - name: Publish results into the branch
+      - name: Publish build results into the branch
         if: always()
         run: |
           mkdir -p ci
           cp build_output.txt ci/last_build.log || true
           cp api_probe.txt ci/api_probe.txt || true
           cp build/libs/*.jar ci/ 2>/dev/null || true
-          cp build/reobfJar/*.jar ci/ 2>/dev/null || true
+          cp build/reobfJar/output.jar ci/output.jar 2>/dev/null || true
           ls -la ci
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -111,5 +101,87 @@ jobs:
             exit 0
           fi
           git commit -m "ci: build artifacts [skip ci]"
-          git pull --rebase --autostash origin "$GITHUB_REF_NAME" || true
-          git push origin "HEAD:$GITHUB_REF_NAME" || git push --force-with-lease origin "HEAD:$GITHUB_REF_NAME"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase --autostash -q origin "$GITHUB_REF_NAME" && git push -q origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "published"
+              exit 0
+            fi
+            sleep 6
+          done
+          echo "publish failed (race) — артефакты останутся в логе задания"
+          exit 0
+
+  runtime:
+    runs-on: ubuntu-latest
+    needs: build
+    if: always()
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Prepare dedicated server
+        run: |
+          mkdir -p run
+          echo "eula=true" > run/eula.txt
+          {
+            echo "level-type=minecraft\\:flat"
+            echo "online-mode=false"
+            echo "max-players=2"
+            echo "spawn-protection=0"
+            echo "difficulty=normal"
+            echo "view-distance=4"
+            echo "simulation-distance=4"
+            echo "sync-chunk-writes=false"
+          } > run/server.properties
+          chmod +x ./gradlew
+
+      - name: Run server with mod self-test
+        continue-on-error: true
+        run: |
+          set +e
+          THEDIRECTOR_SELFTEST=1 timeout 900 ./gradlew runServer --no-daemon --console=plain > server_output.txt 2>&1
+          echo "server_exit_code=$?" >> server_output.txt
+          grep -E "SELFTEST|Done \(|The Director|Exception|ERROR|FAIL" server_output.txt | tail -60
+
+      - name: Summarise self-test
+        if: always()
+        run: |
+          {
+            echo "=== SELFTEST REPORT ==="
+            grep -A40 "THEDIRECTOR SELFTEST" server_output.txt 2>/dev/null | head -50 || echo "нет отчёта самотеста"
+            echo "=== mod load lines ==="
+            grep -E "thedirector|The Director" server_output.txt 2>/dev/null | head -25 || true
+          } > selftest_summary.txt 2>&1
+          cat selftest_summary.txt
+
+      - name: Publish server log into the branch
+        if: always()
+        run: |
+          mkdir -p ci
+          cp server_output.txt ci/last_server_log.txt || true
+          cp selftest_summary.txt ci/selftest_summary.txt || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f ci
+          if git diff --cached --quiet; then
+            echo "nothing to publish"
+            exit 0
+          fi
+          git commit -m "ci: server self-test log [skip ci]"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase --autostash -q origin "$GITHUB_REF_NAME" && git push -q origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "published"
+              exit 0
+            fi
+            sleep 6
+          done
+          echo "publish failed (race)"
+          exit 0

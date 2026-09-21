@@ -87,6 +87,9 @@ tasks.named('processResources', ProcessResources).configure {
     ]
     inputs.properties replaceProperties
 
+    // Явная кодировка: иначе на разных платформах mods.toml может уехать в чужую кодировку
+    filteringCharset = 'UTF-8'
+
     filesMatching(['META-INF/mods.toml']) {
         expand replaceProperties
     }
