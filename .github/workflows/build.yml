@@ -112,6 +112,24 @@ jobs:
           echo "publish failed (race) — артефакты останутся в логе задания"
           exit 0
 
+      - name: Publish GitHub release with the ready JAR
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: v1.0.0
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "релиз $TAG уже существует — обновляю артефакт"
+            gh release upload "$TAG" build/libs/thedirector-1.0.0.jar --clobber
+          else
+            echo "создаю релиз $TAG"
+            gh release create "$TAG" build/libs/thedirector-1.0.0.jar \
+              --target "$GITHUB_REF_NAME" \
+              --title "The Director 1.0.0 — Minecraft 1.20.1 (Forge)" \
+              --notes-file RELEASE_NOTES.md
+          fi
+          gh release view "$TAG" --json url,assets --jq '.url, (.assets[] | "\(.name) — \(.size) байт")'
+
   runtime:
     runs-on: ubuntu-latest
     needs: build
