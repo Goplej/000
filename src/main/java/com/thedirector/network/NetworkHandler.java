@@ -106,6 +106,7 @@ public final class NetworkHandler {
     }
 
     private static <MSG> void send(MSG packet, ServerPlayer player) {
-        CHANNEL.send(packet, PacketDistributor.PLAYER.with(() -> player));
+        // Внимание: в Forge 1.20.1 порядок аргументов — сначала цель, затем пакет
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet);
     }
 }
