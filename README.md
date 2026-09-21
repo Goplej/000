@@ -28,6 +28,9 @@
 
 ---
 
+**Скачать готовый JAR:** https://github.com/Goplej/000/releases/download/v1.0.0/thedirector-1.0.0.jar
+(страница релиза: https://github.com/Goplej/000/releases/tag/v1.0.0)
+
 ## 2. Установка
 
 1. Установите **Minecraft 1.20.1** и **Forge 47.2.0** (или новее в ветке 47.x).
