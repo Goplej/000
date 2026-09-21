@@ -1,0 +1,98 @@
+{
+  "whisper": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:entity.enderman.stare"
+      }
+    ]
+  },
+  "breath": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:entity.enderman.ambient"
+      }
+    ]
+  },
+  "roof_step": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.gravel.step"
+      }
+    ]
+  },
+  "step_echo": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.stone.step"
+      }
+    ]
+  },
+  "void_ambient": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:ambient.cave"
+      }
+    ]
+  },
+  "static_noise": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:entity.ghast.scream"
+      }
+    ]
+  },
+  "crash": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:entity.wither.spawn"
+      }
+    ]
+  },
+  "extinguish": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.fire.extinguish"
+      }
+    ]
+  },
+  "wood_creak": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.wooden_door.open"
+      }
+    ]
+  },
+  "reverse": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.beacon.deactivate"
+      }
+    ]
+  },
+  "chest": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:block.chest.open"
+      }
+    ]
+  },
+  "thunder": {
+    "sounds": [
+      {
+        "type": "event",
+        "name": "minecraft:entity.lightning_bolt.thunder"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "item.thedirector.twin_item": "Something Of Yours",
+  "item.thedirector.twin_item.hover": "It is exactly like the other one. Almost.",
+  "thedirector.msg.act1": "...",
+  "thedirector.msg.watch": "you are being watched",
+  "thedirector.msg.behind": "do not turn around",
+  "thedirector.msg.remember": "it remembers your house",
+  "thedirector.msg.return": "you should not have come back",
+  "thedirector.msg.dream": "you are not sleeping",
+  "thedirector.msg.item": "this is not yours",
+  "thedirector.title.dream": "SLEEP://"
+}

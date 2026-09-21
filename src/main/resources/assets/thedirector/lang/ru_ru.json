@@ -1,0 +1,12 @@
+{
+  "item.thedirector.twin_item": "Что-то Из Твоих Вещей",
+  "item.thedirector.twin_item.hover": "Оно точно такое же, как второе. Почти.",
+  "thedirector.msg.act1": "...",
+  "thedirector.msg.watch": "за тобой наблюдают",
+  "thedirector.msg.behind": "не оборачивайся",
+  "thedirector.msg.remember": "оно помнит твой дом",
+  "thedirector.msg.return": "ты зря вернулся",
+  "thedirector.msg.dream": "ты не спишь",
+  "thedirector.msg.item": "это не твоё",
+  "thedirector.title.dream": "СОН://"
+}
