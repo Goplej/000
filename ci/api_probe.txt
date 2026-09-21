@@ -59,9 +59,16 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="thedirector"
-version="1.0.0"
+version="1.0.1"
 displayName="The Director"
 authors="Goplej"
 description='''Directed psychological horror with no AI, no LLM and no network calls inside the mod: the system watches, stays silent, then strikes.'''
 logoFile="icon.png"
 
+=== MinecraftServer command API ===
+  public void m_129849_(net.minecraft.commands.CommandSourceStack);
+  public net.minecraft.commands.CommandSourceStack m_129893_();
+=== CommandSourceStack ===
+=== RegisterCommandsEvent ===
+     1765  1989-11-26 00:00   net/minecraftforge/event/RegisterCommandsEvent.class
+=== DimensionType fixedTime/bedWorks ===
