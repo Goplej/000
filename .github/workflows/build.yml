@@ -72,8 +72,16 @@ jobs:
             javap -classpath "$CP" net.minecraftforge.network.simple.SimpleChannel 2>&1 | head -25
             echo "=== mods.toml in jar ==="
             unzip -p build/libs/*.jar META-INF/mods.toml 2>&1 | head -12
+            echo "=== MinecraftServer command API ==="
+            javap -classpath "$CP" net.minecraft.server.MinecraftServer 2>&1 | grep -iE "CommandSourceStack|performPrefixedCommand|getCommands" | head -8
+            echo "=== CommandSourceStack ==="
+            javap -classpath "$CP" net.minecraft.commands.CommandSourceStack 2>&1 | grep -iE "sendSuccess|sendSystemMessage|getPlayerOrException|hasPermission" | head -10
+            echo "=== RegisterCommandsEvent ==="
+            unzip -l "$FORGEJAR" 2>/dev/null | grep -E "RegisterCommandsEvent" | head -3
+            echo "=== DimensionType fixedTime/bedWorks ==="
+            javap -classpath "$CP" net.minecraft.world.level.dimension.DimensionType 2>&1 | grep -iE "fixedTime|bedWorks|natural" | head -6
           } > api_probe.txt 2>&1
-          head -60 api_probe.txt
+          head -80 api_probe.txt
 
       - name: Inspect build outputs
         if: always()
@@ -116,16 +124,20 @@ jobs:
         if: success()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: v1.0.0
         run: |
+          MOD_VERSION="$(grep -m1 '^mod_version=' gradle.properties | cut -d= -f2 | tr -d '[:space:]')"
+          TAG="v${MOD_VERSION}"
+          JAR="build/libs/thedirector-${MOD_VERSION}.jar"
+          echo "версия: $MOD_VERSION, тег: $TAG, файл: $JAR"
+          ls -la "$JAR"
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "релиз $TAG уже существует — обновляю артефакт"
-            gh release upload "$TAG" build/libs/thedirector-1.0.0.jar --clobber
+            gh release upload "$TAG" "$JAR" --clobber
           else
             echo "создаю релиз $TAG"
-            gh release create "$TAG" build/libs/thedirector-1.0.0.jar \
+            gh release create "$TAG" "$JAR" \
               --target "$GITHUB_REF_NAME" \
-              --title "The Director 1.0.0 — Minecraft 1.20.1 (Forge)" \
+              --title "The Director ${MOD_VERSION} — Minecraft 1.20.1 (Forge)" \
               --notes-file RELEASE_NOTES.md
           fi
           gh release view "$TAG" --json url,assets --jq '.url, (.assets[] | "\(.name) — \(.size) байт")'

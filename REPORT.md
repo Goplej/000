@@ -4,9 +4,9 @@
 
 | Что | Где |
 |---|---|
-| **Готовый мод** | `dist/thedirector-1.0.0.jar` (в этой ветке, 313 КБ) |
-| Копия из сборки CI | `ci/thedirector-1.0.0.jar` (публикуется автоматически при каждой сборке) |
-| Путь внутри сборки | `build/libs/thedirector-1.0.0.jar` |
+| **Готовый мод** | `dist/thedirector-1.0.1.jar` (в этой ветке, 313 КБ) |
+| Копия из сборки CI | `ci/thedirector-1.0.1.jar` (публикуется автоматически при каждой сборке) |
+| Путь внутри сборки | `build/libs/thedirector-1.0.1.jar` |
 | SHA-256 | `35a882c78761ea0b7ca4cc034e4a859ccea27be02feae7d50ef0f2f883fd727c` |
 | Содержимое | 107 файлов: `META-INF/mods.toml`, `pack.mcmeta`, `icon.png`, 50 классов, датапак измерения, 12 звуков `.ogg`, `lang/en_us.json`, `lang/ru_ru.json` |
 
@@ -27,7 +27,7 @@ ForgeGradle 6 складывает результат задачи `reobfJar` в
 
 ---
 
-**Публичная ссылка на скачивание:** https://github.com/Goplej/000/releases/download/v1.0.0/thedirector-1.0.0.jar
+**Публичная ссылка на скачивание:** https://github.com/Goplej/000/releases/download/v1.0.1/thedirector-1.0.1.jar
 
 ## 2. Как собрано и почему именно так
 

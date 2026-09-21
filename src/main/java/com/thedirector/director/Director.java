@@ -92,6 +92,22 @@ public final class Director {
         fire(event, player, level, memory);
     }
 
+    /**
+     * Немедленно выполнить конкретное событие, минуя все задержки.
+     *
+     * <p>Используется командой {@code /thedirector event <id>}: это единственный способ
+     * проверить мод, не ожидая нужного акта и настроения режиссёра.</p>
+     *
+     * @return {@code true}, если событие было запущено
+     */
+    public static boolean fireEventNow(ServerPlayer player, PlayerMemory memory, DirectorEvent event) {
+        if (event == null) {
+            return false;
+        }
+        fire(event, player, player.serverLevel(), memory);
+        return true;
+    }
+
     /** Применить событие и обновить память. */
     private static void fire(DirectorEvent event, ServerPlayer player, ServerLevel level, PlayerMemory memory) {
         try {

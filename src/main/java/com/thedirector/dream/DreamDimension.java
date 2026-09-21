@@ -60,16 +60,29 @@ public final class DreamDimension {
      * @return {@code true}, если сон начался (или начал строиться)
      */
     public static boolean tryEnter(ServerPlayer player, PlayerMemory memory, double roll) {
+        return tryEnter(player, memory, roll, false);
+    }
+
+    /**
+     * Попытка входа в сон после пробуждения.
+     *
+     * @param force {@code true} — команда {@code /thedirector dream}: проверки шанса и
+     *              правила «один сон в игровой день» пропускаются
+     * @return {@code true}, если сон начался (или начал строиться)
+     */
+    public static boolean tryEnter(ServerPlayer player, PlayerMemory memory, double roll, boolean force) {
         if (!Config.dreamEnabled()) {
             return false;
         }
         // Один сон в день: режиссёр не повторяется
         long day = player.serverLevel().getDayTime() / 24000L;
-        if (memory.getLastDreamAttemptDay() == day) {
-            return false;
-        }
-        if (roll > dreamChance(memory)) {
-            return false;
+        if (!force) {
+            if (memory.getLastDreamAttemptDay() == day) {
+                return false;
+            }
+            if (roll > dreamChance(memory)) {
+                return false;
+            }
         }
 
         MinecraftServer server = player.server;

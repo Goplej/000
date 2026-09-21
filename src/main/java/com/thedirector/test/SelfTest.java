@@ -3,11 +3,14 @@ package com.thedirector.test;
 import com.thedirector.Config;
 import com.thedirector.ModItems;
 import com.thedirector.TheDirector;
+import com.thedirector.director.DirectorEvent;
 import com.thedirector.director.EventDirector;
 import com.thedirector.dream.DreamDimension;
 import com.thedirector.memory.PlayerMemory;
 import com.thedirector.network.NetworkHandler;
 import com.thedirector.util.ScheduledTasks;
+import com.mojang.brigadier.tree.CommandNode;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -116,6 +119,36 @@ public final class SelfTest {
             stack.getOrCreateTag().putBoolean(com.thedirector.util.CorruptionTags.DREAM_KEY, true);
             return com.thedirector.corruption.ItemCorruptionSystem.isDreamKey(stack);
         });
+
+        check(report, failed, "все события имеют уникальные id",
+                () -> EventDirector.all().stream().map(DirectorEvent::id).distinct().count()
+                        == EventDirector.all().size());
+
+        check(report, failed, "команда /thedirector зарегистрирована",
+                () -> server.getCommands().getDispatcher().getRoot().getChild("thedirector") != null);
+
+        check(report, failed, "подкоманды status / events / event / act / dream / wake на месте",
+                () -> {
+                    CommandNode<CommandSourceStack> root =
+                            server.getCommands().getDispatcher().getRoot().getChild("thedirector");
+                    if (root == null) {
+                        return false;
+                    }
+                    for (String sub : new String[]{"status", "events", "event", "act", "dream", "wake"}) {
+                        if (root.getChild(sub) == null) {
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+
+        check(report, failed, "команда выполняется из консоли сервера (thedirector status)",
+                () -> server.getCommands().performPrefixedCommand(server.createCommandSourceStack(),
+                        "thedirector status") > 0);
+
+        check(report, failed, "команда перечисляет события (thedirector events)",
+                () -> server.getCommands().performPrefixedCommand(server.createCommandSourceStack(),
+                        "thedirector events") > 0);
 
         // --- 2. Асинхронная проверка планировщика (нужно несколько тиков) ---
         AtomicBoolean schedulerRan = new AtomicBoolean(false);
