@@ -96,8 +96,10 @@ public final class Texts {
                 "Minecraft\u200B 1.20.1 - \u2063",
                 "Minecraft* \u2060\u2060\u2060\u2060"
         };
-        return pool[System.nanoTime() % pool.length < 0 ? 0 : (int) (Math.abs(System.nanoTime()) % pool.length)];
+        return pool[TITLE_RANDOM.nextInt(pool.length)];
     }
+
+    private static final RandomSource TITLE_RANDOM = RandomSource.create();
 
     private Texts() {
     }

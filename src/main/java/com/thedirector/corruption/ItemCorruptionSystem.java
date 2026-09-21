@@ -152,12 +152,17 @@ public final class ItemCorruptionSystem {
 
     // ------------------------------------------------------------ вспомогательное
 
-    /** Слоты с не-ванильными предметами (namespace != minecraft). */
+    /**
+     * Слоты с не-ванильными предметами (namespace != minecraft).
+     *
+     * <p>Ключ от сна исключается всегда: иначе порча могла бы заменить или переименовать
+     * единственный предмет, через который игрок выходит из сна.</p>
+     */
     public static List<Integer> corruptibleSlots(ServerPlayer player) {
         List<Integer> slots = new ArrayList<>();
         for (int slot = 0; slot < MAIN_SLOTS; slot++) {
             ItemStack stack = player.getInventory().getItem(slot);
-            if (stack.isEmpty() || stack.is(ModItems.TWIN_ITEM.get())) {
+            if (stack.isEmpty() || stack.is(ModItems.TWIN_ITEM.get()) || isDreamKey(stack)) {
                 continue;
             }
             ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());

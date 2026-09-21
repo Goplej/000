@@ -76,7 +76,9 @@ public final class DreamReplicator {
      * @param after  что выполнить после завершения (обычно — телепорт и порча предметов)
      */
     public static void begin(ServerLevel dream, ServerLevel source, BlockPos center, ServerPlayer player, Runnable after) {
-        clear();
+        // Сначала убираем прошлый сон (иначе измерение будет накапливать копии)
+        clear(dream);
+        PENDING.clear();
         onFinished = after;
         spawnPoint = null;
 

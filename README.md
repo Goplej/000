@@ -227,7 +227,7 @@ src/main/java/com/thedirector/
   util/                       — ScheduledTasks, Texts, MetaLayer, CorruptionTags, TickHandler
 src/main/resources/
   META-INF/mods.toml, pack.mcmeta, icon.png
-  assets/thedirector/         — sounds.json (редиректы на ванильные звуки), lang/en_us.json, lang/ru_ru.json, models/item, textures/item
+  assets/thedirector/         — sounds.json + 12 синтезированных .ogg, lang/en_us.json, lang/ru_ru.json, models/item, textures/item
   data/thedirector/dimension_type/dream_type.json
   data/thedirector/dimension/dream.json
 ```
