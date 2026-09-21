@@ -18,6 +18,7 @@ on:
     paths-ignore:
       - 'ci/**'
       - '**/*.md'
+      - 'dist/**'
   workflow_dispatch:
 
 permissions:
