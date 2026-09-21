@@ -17,23 +17,23 @@
 RESULT: OK
 ================================
 
-[17:37:52] [Server thread/INFO] [co.th.TheDirector/]: [The Director] SELFTEST_DONE OK
-[17:37:52] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
-[17:37:52] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
-[17:37:52] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
-[17:37:53] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[17:37:53] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[17:37:53] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[17:37:53] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/thedirector:dream
-[17:37:53] [Server thread/DEBUG] [ne.mi.co.ForgeHooks/WP]: Gathering id map for writing to world save world
-[17:37:53] [Server thread/DEBUG] [ne.mi.co.ForgeHooks/WP]: ID Map collection complete world
-[17:37:53] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[17:37:53] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[17:37:53] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[17:37:53] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (dream): All chunks are saved
-[17:37:53] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
-[17:37:53] [Server thread/INFO] [co.th.TheDirector/]: [The Director] Сервер остановлен. Он подождёт.
-[17:37:53] [Server thread/DEBUG] [ne.mi.fm.co.ConfigTracker/CONFIG]: Unloading configs type SERVER
+[17:55:14] [Server thread/INFO] [co.th.TheDirector/]: [The Director] SELFTEST_DONE OK
+[17:55:14] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[17:55:14] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[17:55:14] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[17:55:15] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[17:55:15] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[17:55:15] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/thedirector:dream
+[17:55:15] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[17:55:15] [Server thread/DEBUG] [ne.mi.co.ForgeHooks/WP]: Gathering id map for writing to world save world
+[17:55:15] [Server thread/DEBUG] [ne.mi.co.ForgeHooks/WP]: ID Map collection complete world
+[17:55:15] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[17:55:15] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[17:55:15] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (dream): All chunks are saved
+[17:55:15] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[17:55:15] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
+[17:55:15] [Server thread/INFO] [co.th.TheDirector/]: [The Director] Сервер остановлен. Он подождёт.
+[17:55:15] [Server thread/DEBUG] [ne.mi.fm.co.ConfigTracker/CONFIG]: Unloading configs type SERVER
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
 
@@ -41,28 +41,28 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.4/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 === mod load lines ===
-[17:37:41] [main/DEBUG] [ne.mi.fm.lo.ta.CommonLaunchHandler/CORE]: Got mod coordinates thedirector%%/home/runner/work/000/000/build/resources/main:thedirector%%/home/runner/work/000/000/build/classes/java/main from env
-[17:37:41] [main/DEBUG] [ne.mi.fm.lo.ta.CommonLaunchHandler/CORE]: Found supplied mod coordinates [{thedirector=[/home/runner/work/000/000/build/resources/main, /home/runner/work/000/000/build/classes/java/main]}]
-[17:37:41] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file main with {thedirector} mods - versions {1.0.0}
-[17:37:41] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file main with {thedirector} mods - versions {1.0.0}
-[17:37:42] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(thedirector)
-[17:37:42] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(thedirector)
-[17:37:42] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(thedirector)
-[17:37:42] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(thedirector)
-[17:37:42] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(thedirector)
-[17:37:42] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(thedirector)]
-[17:37:42] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(thedirector)]
-[17:37:45] [main/DEBUG] [ne.mi.fm.ja.FMLModContainer/LOADING]: Creating FMLModContainer instance for com.thedirector.TheDirector
-[17:37:45] [modloading-worker-0/DEBUG] [ne.mi.fm.co.ConfigTracker/CONFIG]: Config file thedirector-common.toml for thedirector tracking
-[17:37:45] [modloading-worker-0/INFO] [co.th.TheDirector/]: [The Director] Загружается. Он уже смотрит.
-[17:37:45] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for thedirector
-[17:37:45] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.util.TickHandler to FORGE
-[17:37:45] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.memory.PlayerMemoryEvents to FORGE
-[17:37:45] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.test.SelfTest to FORGE
-[17:37:45] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.dream.DreamEvents to FORGE
-[17:37:45] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.corruption.CorruptionEvents to FORGE
-[17:37:45] [main/DEBUG] [ne.mi.fm.co.ConfigFileTypeHandler/CONFIG]: Built TOML config for /home/runner/work/000/000/run/config/thedirector-common.toml
-[17:37:45] [main/DEBUG] [ne.mi.fm.co.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file /home/runner/work/000/000/run/config/thedirector-common.toml
-[17:37:45] [main/DEBUG] [ne.mi.fm.co.ConfigFileTypeHandler/CONFIG]: Watching TOML config file /home/runner/work/000/000/run/config/thedirector-common.toml for changes
-[17:37:45] [main/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Configuration file /home/runner/work/000/000/run/config/thedirector-common.toml is not correct. Correcting
-[17:37:45] [Thread-1/DEBUG] [ne.mi.fm.co.ConfigFileTypeHandler/CONFIG]: Config file thedirector-common.toml changed, sending notifies
+[17:54:59] [main/DEBUG] [ne.mi.fm.lo.ta.CommonLaunchHandler/CORE]: Got mod coordinates thedirector%%/home/runner/work/000/000/build/resources/main:thedirector%%/home/runner/work/000/000/build/classes/java/main from env
+[17:54:59] [main/DEBUG] [ne.mi.fm.lo.ta.CommonLaunchHandler/CORE]: Found supplied mod coordinates [{thedirector=[/home/runner/work/000/000/build/resources/main, /home/runner/work/000/000/build/classes/java/main]}]
+[17:54:59] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file main with {thedirector} mods - versions {1.0.0}
+[17:54:59] [main/DEBUG] [ne.mi.fm.lo.mo.ModFileInfo/LOADING]: Found valid mod file main with {thedirector} mods - versions {1.0.0}
+[17:55:01] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(thedirector)
+[17:55:01] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(thedirector)
+[17:55:01] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(thedirector)
+[17:55:01] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(thedirector)
+[17:55:01] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(thedirector)
+[17:55:01] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(thedirector)]
+[17:55:01] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(thedirector)]
+[17:55:06] [main/DEBUG] [ne.mi.fm.ja.FMLModContainer/LOADING]: Creating FMLModContainer instance for com.thedirector.TheDirector
+[17:55:06] [modloading-worker-0/DEBUG] [ne.mi.fm.co.ConfigTracker/CONFIG]: Config file thedirector-common.toml for thedirector tracking
+[17:55:06] [modloading-worker-0/INFO] [co.th.TheDirector/]: [The Director] Загружается. Он уже смотрит.
+[17:55:06] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for thedirector
+[17:55:06] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.util.TickHandler to FORGE
+[17:55:06] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.memory.PlayerMemoryEvents to FORGE
+[17:55:06] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.test.SelfTest to FORGE
+[17:55:06] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.dream.DreamEvents to FORGE
+[17:55:06] [modloading-worker-0/DEBUG] [ne.mi.fm.ja.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.thedirector.corruption.CorruptionEvents to FORGE
+[17:55:06] [main/DEBUG] [ne.mi.fm.co.ConfigFileTypeHandler/CONFIG]: Built TOML config for /home/runner/work/000/000/run/config/thedirector-common.toml
+[17:55:06] [main/DEBUG] [ne.mi.fm.co.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file /home/runner/work/000/000/run/config/thedirector-common.toml
+[17:55:06] [main/DEBUG] [ne.mi.fm.co.ConfigFileTypeHandler/CONFIG]: Watching TOML config file /home/runner/work/000/000/run/config/thedirector-common.toml for changes
+[17:55:06] [main/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Configuration file /home/runner/work/000/000/run/config/thedirector-common.toml is not correct. Correcting
+[17:55:06] [Thread-1/DEBUG] [ne.mi.fm.co.ConfigFileTypeHandler/CONFIG]: Config file thedirector-common.toml changed, sending notifies
