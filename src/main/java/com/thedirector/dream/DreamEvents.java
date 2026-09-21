@@ -142,7 +142,7 @@ public final class DreamEvents {
         var source = event.getSource();
         if (source.is(DamageTypes.LAVA) || source.is(DamageTypes.HOT_FLOOR)
                 || source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.ON_FIRE)
-                || source.is(DamageTypes.DROWNING) || source.is(DamageTypes.OUT_OF_WORLD)
+                || source.is(DamageTypes.DROWN) || source.is(DamageTypes.FELL_OUT_OF_WORLD)
                 || source.is(DamageTypes.STARVE) || source.is(DamageTypes.FALL)) {
             event.setCanceled(true);
         }

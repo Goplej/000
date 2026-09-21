@@ -43,6 +43,46 @@ jobs:
           echo "gradle_exit_code=$?" >> build_output.txt
           tail -n 120 build_output.txt
 
+      - name: Probe real 1.20.1 API signatures
+        if: always()
+        run: |
+          {
+            MCJAR=""; FORGEJAR=""
+            while read -r j; do
+              if [ -z "$MCJAR" ] && unzip -l "$j" 2>/dev/null | grep -q "net/minecraft/server/level/ServerPlayer.class"; then MCJAR="$j"; fi
+              if [ -z "$FORGEJAR" ] && unzip -l "$j" 2>/dev/null | grep -q "net/minecraftforge/network/NetworkRegistry.class"; then FORGEJAR="$j"; fi
+              if [ -n "$MCJAR" ] && [ -n "$FORGEJAR" ]; then break; fi
+            done < <(find ~/.gradle/caches -name "*.jar" 2>/dev/null | grep -v sources | head -500)
+            echo "MCJAR=$MCJAR"
+            echo "FORGEJAR=$FORGEJAR"
+            CP="$MCJAR:$FORGEJAR"
+            echo "=== forge network classes ==="
+            unzip -l "$FORGEJAR" 2>/dev/null | grep -E "network/.*(SimpleChannel|ChannelBuilder|NetworkRegistry|NetworkDirection|MessageBuilder)" | head -20
+            echo "=== NetworkRegistry ==="
+            javap -classpath "$CP" net.minecraftforge.network.NetworkRegistry 2>&1 | head -30
+            echo "=== SimpleChannel (old package) ==="
+            javap -classpath "$CP" net.minecraftforge.network.simple.SimpleChannel 2>&1 | head -40
+            echo "=== ServerPlayer.teleportTo ==="
+            javap -classpath "$CP" net.minecraft.server.level.ServerPlayer 2>&1 | grep -i "teleportTo" | head -10
+            echo "=== FriendlyByteBuf component ==="
+            javap -classpath "$CP" net.minecraft.network.FriendlyByteBuf 2>&1 | grep -iE "component" | head -10
+            echo "=== Screenshot ==="
+            javap -classpath "$CP" net.minecraft.client.Screenshot 2>&1 | head -12
+            echo "=== SimpleSoundInstance ctors ==="
+            javap -classpath "$CP" net.minecraft.client.resources.sounds.SimpleSoundInstance 2>&1 | grep -E "SimpleSoundInstance\(" | head -10
+            echo "=== ItemEntity.setNeverPickUp ==="
+            javap -classpath "$CP" net.minecraft.world.entity.item.ItemEntity 2>&1 | grep -iE "neverPickUp|setNever" | head -5
+            echo "=== GuiGraphics fill/drawString ==="
+            javap -classpath "$CP" net.minecraft.client.gui.GuiGraphics 2>&1 | grep -E "void fill|drawString" | head -10
+            echo "=== Level playSound/setBlock ==="
+            javap -classpath "$CP" net.minecraft.world.level.Level 2>&1 | grep -E "playSound|playLocalSound|setBlock\(" | head -12
+            echo "=== ServerLevel weather ==="
+            javap -classpath "$CP" net.minecraft.server.level.ServerLevel 2>&1 | grep -iE "weather" | head -5
+            echo "=== MobEffects CONFUSION ==="
+            javap -classpath "$CP" net.minecraft.world.effect.MobEffects 2>&1 | grep -iE "CONFUSION|HUNGER|NAUSEA" | head -5
+          } > api_probe.txt 2>&1
+          cat api_probe.txt | head -120
+
       - name: Inspect build outputs
         if: always()
         run: |
@@ -59,6 +99,7 @@ jobs:
         run: |
           mkdir -p ci
           cp build_output.txt ci/last_build.log || true
+          cp api_probe.txt ci/api_probe.txt || true
           cp build/libs/*.jar ci/ 2>/dev/null || true
           cp build/reobfJar/*.jar ci/ 2>/dev/null || true
           ls -la ci

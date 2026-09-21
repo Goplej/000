@@ -12,13 +12,13 @@ import com.thedirector.network.packet.S2CVignettePacket;
 import com.thedirector.network.packet.S2CWindowTitlePacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.ChannelBuilder;
 import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
-import net.minecraftforge.network.SimpleChannel;
+import net.minecraftforge.network.simple.SimpleChannel;
 
 /**
- * Сетевой канал мода.
+ * Сетевой канал мода (Forge 1.20.1).
  *
  * <p>Пакеты идут только в одну сторону — от сервера к клиенту. Клиент не отправляет
  * режиссёру ничего: мод не спрашивает игрока ни о чём и не принимает от него команд.
@@ -29,15 +29,15 @@ import net.minecraftforge.network.SimpleChannel;
 public final class NetworkHandler {
 
     /** Версия протокола. */
-    public static final int PROTOCOL_VERSION = 1;
+    public static final String PROTOCOL_VERSION = "1";
 
     private static int nextId;
 
-    public static final SimpleChannel CHANNEL = ChannelBuilder
-            .named(new ResourceLocation(TheDirector.MOD_ID, "main"))
-            .networkProtocolVersion(PROTOCOL_VERSION)
-            .acceptedVersions((status, version) -> true)
-            .simpleChannel();
+    public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
+            new ResourceLocation(TheDirector.MOD_ID, "main"),
+            () -> PROTOCOL_VERSION,
+            version -> true,
+            version -> true);
 
     /** Регистрация всех пакетов (вызывается в common setup). */
     public static void register() {
@@ -105,8 +105,7 @@ public final class NetworkHandler {
         }
     }
 
-    @SuppressWarnings("unchecked")
-    private static void send(Object packet, ServerPlayer player) {
+    private static <MSG> void send(MSG packet, ServerPlayer player) {
         CHANNEL.send(packet, PacketDistributor.PLAYER.with(() -> player));
     }
 }

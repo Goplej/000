@@ -3,6 +3,7 @@ package com.thedirector.client;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.thedirector.Config;
 import com.thedirector.TheDirector;
+import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
 import net.minecraft.client.gui.GuiGraphics;
@@ -114,7 +115,8 @@ public final class ClientEffects {
             return;
         }
         if (originalWindowTitle == null) {
-            originalWindowTitle = minecraft.getWindow().getTitle();
+            // Ванильный заголовок окна (в 1.20.1 Window не отдаёт текущее значение наружу)
+            originalWindowTitle = "Minecraft* " + SharedConstants.getCurrentVersion().getName();
         }
         if (title.isEmpty()) {
             minecraft.getWindow().setTitle(originalWindowTitle);

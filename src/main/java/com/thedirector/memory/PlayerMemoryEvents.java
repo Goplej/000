@@ -7,7 +7,6 @@ import com.thedirector.director.event.support.Search;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -82,9 +81,7 @@ public final class PlayerMemoryEvents {
         if (!(event.getPlayer() instanceof ServerPlayer player)) {
             return;
         }
-        if (event.getEntity() instanceof ItemEntity itemEntity) {
-            PlayerMemory.of(player).rememberLostItem(itemEntity.getItem().copy());
-        }
+        PlayerMemory.of(player).rememberLostItem(event.getEntity().getItem().copy());
     }
 
     /** Учёт источников света: игрок сам показывает, чего он боится. */
