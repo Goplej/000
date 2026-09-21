@@ -1,0 +1,80 @@
+MCJAR=/home/runner/.gradle/caches/forge_gradle/mcp_repo/net/minecraft/joined/1.20.1-20230612.114412/joined-1.20.1-20230612.114412-srg.jar
+FORGEJAR=/home/runner/.gradle/caches/forge_gradle/maven_downloader/net/minecraftforge/forge/1.20.1-47.2.0/forge-1.20.1-47.2.0-universal.jar
+=== forge network classes ===
+      669  1989-11-26 00:00   net/minecraftforge/network/NetworkDirection$Factory.class
+     9361  1989-11-26 00:00   net/minecraftforge/network/NetworkDirection.class
+     2676  1989-11-26 00:00   net/minecraftforge/network/NetworkRegistry$ChannelBuilder.class
+     1522  1989-11-26 00:00   net/minecraftforge/network/NetworkRegistry$LoginPayload.class
+    19499  1989-11-26 00:00   net/minecraftforge/network/NetworkRegistry.class
+      561  1989-11-26 00:00   net/minecraftforge/network/simple/SimpleChannel$MessageBuilder$ToBooleanBiFunction.class
+    10948  1989-11-26 00:00   net/minecraftforge/network/simple/SimpleChannel$MessageBuilder.class
+    13994  1989-11-26 00:00   net/minecraftforge/network/simple/SimpleChannel.class
+=== NetworkRegistry ===
+Compiled from "NetworkRegistry.java"
+public class net.minecraftforge.network.NetworkRegistry {
+  public static net.minecraftforge.network.ServerStatusPing$ChannelData ABSENT;
+  public static java.lang.String ACCEPTVANILLA;
+  public net.minecraftforge.network.NetworkRegistry();
+  public static java.util.function.Predicate<java.lang.String> acceptMissingOr(java.lang.String);
+  public static java.util.function.Predicate<java.lang.String> acceptMissingOr(java.util.function.Predicate<java.lang.String>);
+  public static java.util.List<java.lang.String> getServerNonVanillaNetworkMods();
+  public static java.util.List<java.lang.String> getClientNonVanillaNetworkMods();
+  public static boolean acceptsVanillaClientConnections();
+  public static boolean canConnectToVanillaServer();
+  public static net.minecraftforge.network.simple.SimpleChannel newSimpleChannel(net.minecraft.resources.ResourceLocation, java.util.function.Supplier<java.lang.String>, java.util.function.Predicate<java.lang.String>, java.util.function.Predicate<java.lang.String>);
+  public static net.minecraftforge.network.event.EventNetworkChannel newEventChannel(net.minecraft.resources.ResourceLocation, java.util.function.Supplier<java.lang.String>, java.util.function.Predicate<java.lang.String>, java.util.function.Predicate<java.lang.String>);
+  static java.util.Optional<net.minecraftforge.network.NetworkInstance> findTarget(net.minecraft.resources.ResourceLocation);
+  static java.util.Map<net.minecraft.resources.ResourceLocation, java.lang.String> buildChannelVersions();
+  static java.util.Map<net.minecraft.resources.ResourceLocation, net.minecraftforge.network.ServerStatusPing$ChannelData> buildChannelVersionsForListPing();
+  static java.util.List<java.lang.String> listRejectedVanillaMods(java.util.function.BiFunction<net.minecraftforge.network.NetworkInstance, java.lang.String, java.lang.Boolean>);
+  static java.util.Map<net.minecraft.resources.ResourceLocation, java.lang.String> validateClientChannels(java.util.Map<net.minecraft.resources.ResourceLocation, java.lang.String>);
+  static java.util.Map<net.minecraft.resources.ResourceLocation, java.lang.String> validateServerChannels(java.util.Map<net.minecraft.resources.ResourceLocation, java.lang.String>);
+  static java.util.List<net.minecraftforge.network.NetworkRegistry$LoginPayload> gatherLoginPayloads(net.minecraftforge.network.NetworkDirection, boolean);
+  public static boolean checkListPingCompatibilityForClient(java.util.Map<net.minecraft.resources.ResourceLocation, net.minecraftforge.network.ServerStatusPing$ChannelData>);
+  public boolean isLocked();
+  public static void lock();
+  static {};
+}
+=== SimpleChannel (old package) ===
+Compiled from "SimpleChannel.java"
+public class net.minecraftforge.network.simple.SimpleChannel {
+  public net.minecraftforge.network.simple.SimpleChannel(net.minecraftforge.network.NetworkInstance);
+  public net.minecraftforge.network.simple.SimpleChannel(net.minecraftforge.network.NetworkInstance, java.util.function.Consumer<net.minecraftforge.network.NetworkEvent$ChannelRegistrationChangeEvent>);
+  public <MSG> int encodeMessage(MSG, net.minecraft.network.FriendlyByteBuf);
+  public <MSG> net.minecraftforge.network.simple.IndexedMessageCodec$MessageHandler<MSG> registerMessage(int, java.lang.Class<MSG>, java.util.function.BiConsumer<MSG, net.minecraft.network.FriendlyByteBuf>, java.util.function.Function<net.minecraft.network.FriendlyByteBuf, MSG>, java.util.function.BiConsumer<MSG, java.util.function.Supplier<net.minecraftforge.network.NetworkEvent$Context>>);
+  public <MSG> net.minecraftforge.network.simple.IndexedMessageCodec$MessageHandler<MSG> registerMessage(int, java.lang.Class<MSG>, java.util.function.BiConsumer<MSG, net.minecraft.network.FriendlyByteBuf>, java.util.function.Function<net.minecraft.network.FriendlyByteBuf, MSG>, java.util.function.BiConsumer<MSG, java.util.function.Supplier<net.minecraftforge.network.NetworkEvent$Context>>, java.util.Optional<net.minecraftforge.network.NetworkDirection>);
+  public <MSG> void sendToServer(MSG);
+  public <MSG> void sendTo(MSG, net.minecraft.network.Connection, net.minecraftforge.network.NetworkDirection);
+  public <MSG> void send(net.minecraftforge.network.PacketDistributor$PacketTarget, MSG);
+  public <MSG> net.minecraft.network.protocol.Packet<?> toVanillaPacket(MSG, net.minecraftforge.network.NetworkDirection);
+  public <MSG> void reply(MSG, net.minecraftforge.network.NetworkEvent$Context);
+  public boolean isRemotePresent(net.minecraft.network.Connection);
+  public <M> net.minecraftforge.network.simple.SimpleChannel$MessageBuilder<M> messageBuilder(java.lang.Class<M>, int);
+  public <M> net.minecraftforge.network.simple.SimpleChannel$MessageBuilder<M> messageBuilder(java.lang.Class<M>, int, net.minecraftforge.network.NetworkDirection);
+}
+=== ServerPlayer.teleportTo ===
+=== FriendlyByteBuf component ===
+  public net.minecraft.network.chat.Component m_130238_();
+  public net.minecraft.network.FriendlyByteBuf m_130083_(net.minecraft.network.chat.Component);
+=== Screenshot ===
+Compiled from "Screenshot.java"
+public class net.minecraft.client.Screenshot {
+  public static final java.lang.String f_260508_;
+  public static void m_92289_(java.io.File, com.mojang.blaze3d.pipeline.RenderTarget, java.util.function.Consumer<net.minecraft.network.chat.Component>);
+  public static void m_92295_(java.io.File, java.lang.String, com.mojang.blaze3d.pipeline.RenderTarget, java.util.function.Consumer<net.minecraft.network.chat.Component>);
+  public static com.mojang.blaze3d.platform.NativeImage m_92279_(com.mojang.blaze3d.pipeline.RenderTarget);
+  public net.minecraft.client.Screenshot(java.io.File, int, int, int) throws java.io.IOException;
+  public void m_168609_(java.nio.ByteBuffer, int, int, int, int);
+  public void m_168605_() throws java.io.IOException;
+  public java.io.File m_168615_() throws java.io.IOException;
+  static {};
+}
+=== SimpleSoundInstance ctors ===
+  public net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.sounds.SoundEvent, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+  public net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.sounds.SoundEvent, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, double, double, double);
+  public net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.resources.ResourceLocation, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, boolean, int, net.minecraft.client.resources.sounds.SoundInstance$Attenuation, double, double, double, boolean);
+=== ItemEntity.setNeverPickUp ===
+=== GuiGraphics fill/drawString ===
+=== Level playSound/setBlock ===
+=== ServerLevel weather ===
+=== MobEffects CONFUSION ===
