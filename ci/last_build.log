@@ -33,14 +33,14 @@ Executing steps
  > Running 'listLibraries'
  > Running 'rename'
 Stopping at requested step: /home/runner/.gradle/caches/forge_gradle/mcp_repo/de/oceanlabs/mcp/mcp_config/1.20.1-20230612.114412/joined/rename/output.jar
-[17:19:14] [main/INFO]: Writing debug log file accesstransform.log
-[17:19:14] [main/INFO]: Access Transformer processor running version 8.2.14
-[17:19:14] [main/INFO]: Command line arguments [--inJar, /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0/forge-1.20.1-47.2.0-injected.jar, --outJar, /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1.jar, --logFile, accesstransform.log, --atFile, /home/runner/work/000/000/build/_atJar_4/parent_at.cfg]
-[17:19:14] [main/INFO]: Reading from /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0/forge-1.20.1-47.2.0-injected.jar
-[17:19:14] [main/INFO]: Writing to /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1.jar
-[17:19:14] [main/INFO]: Transformer file /home/runner/work/000/000/build/_atJar_4/parent_at.cfg
-[17:19:14] [main/WARN]: Found existing output jar /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1.jar, overwriting
-[17:19:18] [main/INFO]: JAR transformation complete /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1.jar
+[17:24:01] [main/INFO]: Writing debug log file accesstransform.log
+[17:24:01] [main/INFO]: Access Transformer processor running version 8.2.14
+[17:24:01] [main/INFO]: Command line arguments [--inJar, /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0/forge-1.20.1-47.2.0-injected.jar, --outJar, /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1.jar, --logFile, accesstransform.log, --atFile, /home/runner/work/000/000/build/_atJar_4/parent_at.cfg]
+[17:24:01] [main/INFO]: Reading from /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0/forge-1.20.1-47.2.0-injected.jar
+[17:24:01] [main/INFO]: Writing to /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1.jar
+[17:24:01] [main/INFO]: Transformer file /home/runner/work/000/000/build/_atJar_4/parent_at.cfg
+[17:24:01] [main/WARN]: Found existing output jar /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1.jar, overwriting
+[17:24:04] [main/INFO]: JAR transformation complete /home/runner/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1.jar
 Creating SRG -> MCP TSRG
 
 > Task :processResources
@@ -61,62 +61,65 @@ Creating SRG -> MCP TSRG
 > Task :build
 > Task :distJar
 
-BUILD SUCCESSFUL in 2m 16s
+BUILD SUCCESSFUL in 2m 14s
 8 actionable tasks: 8 executed
 gradle_exit_code=0
 
 === build/libs ===
-total 148
-drwxr-xr-x  2 runner runner   4096 Sep 21 17:19 .
-drwxr-xr-x 16 runner runner   4096 Sep 21 17:19 ..
--rw-r--r--  1 runner runner 141357 Sep 21 17:19 thedirector-1.0.0.jar
-=== build/devlibs ===
-ls: cannot access 'build/devlibs': No such file or directory
+total 324
+drwxr-xr-x  2 runner runner   4096 Sep 21 17:24 .
+drwxr-xr-x 16 runner runner   4096 Sep 21 17:24 ..
+-rw-r--r--  1 runner runner 320206 Sep 21 17:24 thedirector-1.0.0.jar
 === build/reobfJar ===
-total 9104
-drwxr-xr-x  2 runner runner    4096 Sep 21 17:19 .
-drwxr-xr-x 16 runner runner    4096 Sep 21 17:19 ..
--rw-r--r--  1 runner runner   37731 Sep 21 17:19 log.txt
--rw-r--r--  1 runner runner 9129252 Sep 21 17:19 mappings.tsrg
--rw-r--r--  1 runner runner  141357 Sep 21 17:19 output.jar
-=== jar contents (top) ===
+total 9280
+drwxr-xr-x  2 runner runner    4096 Sep 21 17:24 .
+drwxr-xr-x 16 runner runner    4096 Sep 21 17:24 ..
+-rw-r--r--  1 runner runner   38361 Sep 21 17:24 log.txt
+-rw-r--r--  1 runner runner 9129252 Sep 21 17:24 mappings.tsrg
+-rw-r--r--  1 runner runner  320206 Sep 21 17:24 output.jar
+=== jar contents ===
 Archive:  build/libs/thedirector-1.0.0.jar
   Length      Date    Time    Name
 ---------  ---------- -----   ----
         0  1970-01-11 22:58   META-INF/
-      264  2026-09-21 17:19   META-INF/MANIFEST.MF
-      942  2026-09-21 17:19   META-INF/mods.toml
+      264  2026-09-21 17:24   META-INF/MANIFEST.MF
+      602  2026-09-21 17:24   META-INF/mods.toml
         0  1970-01-11 22:58   assets/
         0  1970-01-11 22:58   assets/thedirector/
         0  1970-01-11 22:58   assets/thedirector/lang/
-      532  2026-09-21 17:19   assets/thedirector/lang/en_us.json
-      617  2026-09-21 17:19   assets/thedirector/lang/ru_ru.json
+      532  2026-09-21 17:24   assets/thedirector/lang/en_us.json
+      617  2026-09-21 17:24   assets/thedirector/lang/ru_ru.json
         0  1970-01-11 22:58   assets/thedirector/models/
         0  1970-01-11 22:58   assets/thedirector/models/item/
-      107  2026-09-21 17:19   assets/thedirector/models/item/twin_item.json
-     1600  2026-09-21 17:19   assets/thedirector/sounds.json
+      107  2026-09-21 17:24   assets/thedirector/models/item/twin_item.json
+     1509  2026-09-21 17:24   assets/thedirector/sounds.json
+        0  1970-01-11 22:58   assets/thedirector/sounds/
+    20045  2026-09-21 17:24   assets/thedirector/sounds/breath.ogg
+     6427  2026-09-21 17:24   assets/thedirector/sounds/chest.ogg
+    15643  2026-09-21 17:24   assets/thedirector/sounds/crash.ogg
+    10489  2026-09-21 17:24   assets/thedirector/sounds/extinguish.ogg
+     5855  2026-09-21 17:24   assets/thedirector/sounds/reverse.ogg
+     6154  2026-09-21 17:24   assets/thedirector/sounds/roof_step.ogg
+    15975  2026-09-21 17:24   assets/thedirector/sounds/static_noise.ogg
+    12178  2026-09-21 17:24   assets/thedirector/sounds/step_echo.ogg
+    21926  2026-09-21 17:24   assets/thedirector/sounds/thunder.ogg
+    24207  2026-09-21 17:24   assets/thedirector/sounds/void_ambient.ogg
+    25059  2026-09-21 17:24   assets/thedirector/sounds/whisper.ogg
+    16458  2026-09-21 17:24   assets/thedirector/sounds/wood_creak.ogg
         0  1970-01-11 22:58   assets/thedirector/textures/
         0  1970-01-11 22:58   assets/thedirector/textures/item/
-      242  2026-09-21 17:19   assets/thedirector/textures/item/twin_item.png
+      242  2026-09-21 17:24   assets/thedirector/textures/item/twin_item.png
         0  1970-01-11 22:58   com/
         0  1970-01-11 22:58   com/thedirector/
-     5169  2026-09-21 17:19   com/thedirector/Config.class
-     4830  2026-09-21 17:19   com/thedirector/ModItems.class
-     3289  2026-09-21 17:19   com/thedirector/ModSounds.class
-     3394  2026-09-21 17:19   com/thedirector/TheDirector.class
+     5169  2026-09-21 17:24   com/thedirector/Config.class
+     4830  2026-09-21 17:24   com/thedirector/ModItems.class
+     3289  2026-09-21 17:24   com/thedirector/ModSounds.class
+     3394  2026-09-21 17:24   com/thedirector/TheDirector.class
         0  1970-01-11 22:58   com/thedirector/client/
-     6036  2026-09-21 17:19   com/thedirector/client/AtmosphereManager.class
-    13257  2026-09-21 17:19   com/thedirector/client/ClientEffects.class
-     2894  2026-09-21 17:19   com/thedirector/client/ClientMetaHandler.class
+     6036  2026-09-21 17:24   com/thedirector/client/AtmosphereManager.class
+    13257  2026-09-21 17:24   com/thedirector/client/ClientEffects.class
+     2894  2026-09-21 17:24   com/thedirector/client/ClientMetaHandler.class
         0  1970-01-11 22:58   com/thedirector/corruption/
-     5597  2026-09-21 17:19   com/thedirector/corruption/CorruptionEvents.class
-     8486  2026-09-21 17:19   com/thedirector/corruption/ItemCorruptionSystem.class
+     5597  2026-09-21 17:24   com/thedirector/corruption/CorruptionEvents.class
+     8486  2026-09-21 17:24   com/thedirector/corruption/ItemCorruptionSystem.class
         0  1970-01-11 22:58   com/thedirector/director/
-      730  2026-09-21 17:19   com/thedirector/director/Act$1.class
-     3104  2026-09-21 17:19   com/thedirector/director/Act.class
-      779  2026-09-21 17:19   com/thedirector/director/Director$1.class
-     6215  2026-09-21 17:19   com/thedirector/director/Director.class
-     4438  2026-09-21 17:19   com/thedirector/director/DirectorEvent.class
-     4346  2026-09-21 17:19   com/thedirector/director/EventDirector.class
-        0  1970-01-11 22:58   com/thedirector/director/event/
-     3063  2026-09-21 17:19   com/thedirector/director/event/ChatMessageEvent.class

@@ -35,7 +35,7 @@ public class net.minecraftforge.network.NetworkRegistry {
   public static void lock();
   static {};
 }
-=== SimpleChannel (old package) ===
+=== SimpleChannel ===
 Compiled from "SimpleChannel.java"
 public class net.minecraftforge.network.simple.SimpleChannel {
   public net.minecraftforge.network.simple.SimpleChannel(net.minecraftforge.network.NetworkInstance);
@@ -52,29 +52,16 @@ public class net.minecraftforge.network.simple.SimpleChannel {
   public <M> net.minecraftforge.network.simple.SimpleChannel$MessageBuilder<M> messageBuilder(java.lang.Class<M>, int);
   public <M> net.minecraftforge.network.simple.SimpleChannel$MessageBuilder<M> messageBuilder(java.lang.Class<M>, int, net.minecraftforge.network.NetworkDirection);
 }
-=== ServerPlayer.teleportTo ===
-=== FriendlyByteBuf component ===
-  public net.minecraft.network.chat.Component m_130238_();
-  public net.minecraft.network.FriendlyByteBuf m_130083_(net.minecraft.network.chat.Component);
-=== Screenshot ===
-Compiled from "Screenshot.java"
-public class net.minecraft.client.Screenshot {
-  public static final java.lang.String f_260508_;
-  public static void m_92289_(java.io.File, com.mojang.blaze3d.pipeline.RenderTarget, java.util.function.Consumer<net.minecraft.network.chat.Component>);
-  public static void m_92295_(java.io.File, java.lang.String, com.mojang.blaze3d.pipeline.RenderTarget, java.util.function.Consumer<net.minecraft.network.chat.Component>);
-  public static com.mojang.blaze3d.platform.NativeImage m_92279_(com.mojang.blaze3d.pipeline.RenderTarget);
-  public net.minecraft.client.Screenshot(java.io.File, int, int, int) throws java.io.IOException;
-  public void m_168609_(java.nio.ByteBuffer, int, int, int, int);
-  public void m_168605_() throws java.io.IOException;
-  public java.io.File m_168615_() throws java.io.IOException;
-  static {};
-}
-=== SimpleSoundInstance ctors ===
-  public net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.sounds.SoundEvent, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
-  public net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.sounds.SoundEvent, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, double, double, double);
-  public net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.resources.ResourceLocation, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, boolean, int, net.minecraft.client.resources.sounds.SoundInstance$Attenuation, double, double, double, boolean);
-=== ItemEntity.setNeverPickUp ===
-=== GuiGraphics fill/drawString ===
-=== Level playSound/setBlock ===
-=== ServerLevel weather ===
-=== MobEffects CONFUSION ===
+=== mods.toml in jar ===
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="thedirector"
+version="1.0.0"
+displayName="The Director"
+authors="Goplej"
+description='''Directed psychological horror with no AI, no LLM and no network calls inside the mod: the system watches, stays silent, then strikes.'''
+logoFile="icon.png"
+
