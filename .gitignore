@@ -1,0 +1,23 @@
+# build outputs
+build/
+build-*/
+cmake-build-*/
+out/
+*.o
+*.a
+*.so
+/lca
+
+# editor / OS noise
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# python noise from sandboxed test runs
+__pycache__/
+*.pyc
+
+# agent bookkeeping
+*.lca-backup-*
+*.lca-tmp-*
