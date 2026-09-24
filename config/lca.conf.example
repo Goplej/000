@@ -1,0 +1,39 @@
+# local-claude-code-agent configuration file
+#
+# Pass with:  lca --config config/lca.conf.example run "your task"
+# Command-line flags always win over values in this file.
+# Lines are key=value; '#' starts a comment.
+
+# Which planner drives the agent: auto | heuristic | local
+brain=auto
+
+# OpenAI-compatible local model server used by the `local` brain
+# (llama.cpp `server`, ollama, LM Studio, ...). Never a paid API.
+model-endpoint=http://127.0.0.1:8080
+#model-name=local-model
+
+# Autonomy budget
+max-steps=24
+# Per-command timeout in milliseconds
+timeout=120000
+
+# Hard memory caps. Only lower than the hardware envelope is accepted;
+# the machine-wide envelope is RAM < 8G and VRAM < 4G.
+max-ram=4G
+max-vram=3G
+
+# Execution sandbox policy: developer | strict | permissive
+policy=developer
+
+# Verification command run after edits and before finishing.
+# Empty = auto-detect (cmake/make/npm/cargo/go/python syntax sweep).
+#verify=make test
+
+# Ask before every shell command
+#confirm=true
+
+# Disable web_search / fetch_page and all network tools
+#no-network=false
+
+# Keep .lca-backup-<timestamp> copies before every mutation
+# (implemented in the file engine; on by default)
