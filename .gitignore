@@ -1,36 +1,22 @@
-# --- Python ---
-__pycache__/
-*.py[cod]
-*.egg-info/
-.eggs/
+# Сборка
 build/
-dist/
-.venv/
-venv/
-.mypy_cache/
-.pytest_cache/
-.ruff_cache/
-.coverage
-htmlcov/
+build-*/
+out/
+cmake-build-*/
 
-# --- AI Agent (локальное состояние) ---
-.aia/
-.aiagent/
-sessions/
-*.session.json
-agent.config.json
-.env
-.env.*
+# Кэши инструментов
+.cache/
+.ccache/
+compile_commands.json
 
-# --- Секреты: НИКОГДА не коммитим ключи ---
-secrets.json
-keys.json
-*.key
-credentials*
-
-# --- Редакторы / ОС ---
-.idea/
+# Редакторы и ОС
+.vs/
 .vscode/
-*.swp
-.DS_Store
+.idea/
+*.user
 Thumbs.db
+desktop.ini
+
+# Артефакты, которые создаёт сам агент
+*.aia-tmp
+*.bak
