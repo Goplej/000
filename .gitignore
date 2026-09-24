@@ -1,0 +1,22 @@
+# Сборка
+build/
+build-*/
+out/
+cmake-build-*/
+
+# Кэши инструментов
+.cache/
+.ccache/
+compile_commands.json
+
+# Редакторы и ОС
+.vs/
+.vscode/
+.idea/
+*.user
+Thumbs.db
+desktop.ini
+
+# Артефакты, которые создаёт сам агент
+*.aia-tmp
+*.bak
