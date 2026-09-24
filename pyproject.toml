@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aiagent-studio"
+version = "1.0.0"
+description = "Мощный ИИ-агент уровня Claude Code: файлы, терминал, интернет, подзадачи, MCP"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "AI Agent Studio" }]
+keywords = ["ai", "agent", "llm", "claude", "gpt", "gemini", "automation", "mcp"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Code Generators",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+# Ядро работает на чистой стандартной библиотеке: ставится где угодно и мгновенно.
+dependencies = []
+
+[project.optional-dependencies]
+# Необязательные улучшения интерфейса и работы с сетью
+ui = ["rich>=13.7", "prompt_toolkit>=3.0"]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.5"]
+
+[project.scripts]
+aia = "aiagent.cli:main"
+aiagent = "aiagent.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/local/aiagent-studio"
+Documentation = "https://github.com/local/aiagent-studio#readme"
+
+[tool.setuptools]
+packages = [
+  "aiagent", "aiagent.core", "aiagent.providers", "aiagent.tools",
+  "aiagent.ui", "aiagent.server", "aiagent.mcp", "aiagent.utils",
+  "aiagent.skills", "aiagent.integrations",
+]
+include-package-data = true
+
+[tool.setuptools.package-data]
+aiagent = ["web/*.html", "web/*.js", "web/*.css", "skills/builtin/*.md"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

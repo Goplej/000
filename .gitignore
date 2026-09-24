@@ -1,0 +1,36 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- AI Agent (локальное состояние) ---
+.aia/
+.aiagent/
+sessions/
+*.session.json
+agent.config.json
+.env
+.env.*
+
+# --- Секреты: НИКОГДА не коммитим ключи ---
+secrets.json
+keys.json
+*.key
+credentials*
+
+# --- Редакторы / ОС ---
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
